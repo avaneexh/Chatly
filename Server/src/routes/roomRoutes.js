@@ -4,7 +4,7 @@ import {
   getRooms,
   getRoom,
   addMember,
-} from '../controllers/roomController.js';
+} from '../controllers/room.controller.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 const router = express.Router();

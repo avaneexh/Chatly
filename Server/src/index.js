@@ -9,7 +9,7 @@ import { Server } from 'socket.io';
 import authRoutes from './routes/authRoutes.js';
 import roomRoutes from './routes/roomRoutes.js';
 import chatRoutes from './routes/chatRoutes.js';
-import setupSocket from './sockets/socketHandler.js';
+import setupSocket from './socket/socketHandler.js';
 
 dotenv.config();
 
