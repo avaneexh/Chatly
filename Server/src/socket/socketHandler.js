@@ -1,5 +1,5 @@
-import Room from '../models/room.model.js';
-import Message from '../models/message.model.js';
+import Room from '../models/Group.js';
+import Message from '../models/Message.js';
 
 const onlineUsers = {}; // Track online users by room
 

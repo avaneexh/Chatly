@@ -1,18 +1,15 @@
 import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
-const authMiddleware = (req, res, next) => {
-  const token = req.header('Authorization');
-  if (!token) {
-    return res.status(401).json({ error: 'Unauthorized access.' });
-  }
+export const authMiddleware = async (req, res, next) => {
+  const token = req.header('x-auth-token');
+  if (!token) return res.status(401).json({ error: 'No token provided' });
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Attach the decoded user info to the request
+    req.user = await User.findById(decoded.userId);
     next();
-  } catch (error) {
-    res.status(401).json({ error: 'Invalid token.' });
+  } catch (err) {
+    res.status(401).json({ error: 'Invalid token' });
   }
 };
-
-export default authMiddleware;
